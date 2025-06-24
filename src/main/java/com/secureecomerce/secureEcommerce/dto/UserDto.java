@@ -2,7 +2,6 @@ package com.secureecomerce.secureEcommerce.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.secureecomerce.secureEcommerce.entity.enums.Role;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -19,6 +18,6 @@ public class UserDto {
     private String username;
     private String password;
     private String email;
-    private Role role;
+    private String role;
     private List<OrderDto> orders;
 }
