@@ -16,7 +16,6 @@ public class UserDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String username;
-    private String password;
     private String email;
     private String role;
     private List<OrderDto> orders;

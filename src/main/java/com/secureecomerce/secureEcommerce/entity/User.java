@@ -3,11 +3,9 @@ package com.secureecomerce.secureEcommerce.entity;
 import com.secureecomerce.secureEcommerce.entity.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Table(name = "users")
@@ -16,6 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User extends BaseEntity {
 
     @NotBlank(message = "Username is required")
@@ -27,6 +26,11 @@ public class User extends BaseEntity {
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    private int failedLoginAttempts;
+    private LocalDateTime lastLoginAttempt;
+    private boolean isBlocked;
+    private LocalDateTime blockedUntil;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
