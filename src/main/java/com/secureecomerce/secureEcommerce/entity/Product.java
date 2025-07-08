@@ -2,6 +2,7 @@ package com.secureecomerce.secureEcommerce.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,11 @@ public class Product extends BaseEntity{
     private String name;
     private String description;
     private BigDecimal price;
+    private Integer stock;
 
     @ManyToMany(mappedBy = "products")
     private List<Order> orders;
+
+
+
 }
