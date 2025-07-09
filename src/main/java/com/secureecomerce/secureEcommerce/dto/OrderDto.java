@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,10 +14,13 @@ import java.util.List;
 public class OrderDto {
 
     private Long id;
+    private Long userId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String status;
-    private UserDto userDto;
+    private BigDecimal totalAmount;
+    private LocalDateTime orderDate;
+    private List<OrderItemDto> orderItems;
     private List<ProductDto> products;
 
 

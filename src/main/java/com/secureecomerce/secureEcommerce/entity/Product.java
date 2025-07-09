@@ -1,9 +1,7 @@
 package com.secureecomerce.secureEcommerce.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +24,12 @@ public class Product extends BaseEntity{
     private String name;
     private String description;
     private BigDecimal price;
-    private Integer stock;
+    private int inventory;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonBackReference
+    private Category category;
 
     @ManyToMany(mappedBy = "products")
     private List<Order> orders;

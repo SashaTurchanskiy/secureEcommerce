@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -15,10 +13,9 @@ public class ProductDto {
 
 
     private Long id;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     private String name;
+    private int inventory;
     private String description;
     private BigDecimal price;
-    private List<OrderDto> orders;
+    private CategoryDto category;
 }
