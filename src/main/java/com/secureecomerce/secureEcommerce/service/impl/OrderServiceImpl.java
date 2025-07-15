@@ -37,8 +37,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto getOrderByUser(User user) {
-
-        return null;
+        List<Order> orders = orderRepo.findAllByUser(user);
+        if (orders.isEmpty()){
+            throw new OurException("No orders found for user: " + user.getUsername());
+        }
+        return orderMapper.toDto(orders.get(0)); // Assuming we return the first order for simplicity
     }
 
     @Override
